@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from "react";
 import {ChatboxComponent} from "@/themes/default/chatbox";
-import {Message, Writable} from "@@/src";
+import {Message, Writable} from "@/index";
 import {SendPrompt} from "@/message_types";
 import {ChatboxHeader} from "@/themes/default/header";
 import {ChatboxInput} from "@/themes/default/input";

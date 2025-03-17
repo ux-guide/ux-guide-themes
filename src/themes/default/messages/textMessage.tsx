@@ -1,6 +1,6 @@
 import Markdown from "marked-react";
 import React from "react";
-import {TextMessageProps} from "@/themes/theme_provider";
+import {TextMessageProps} from "@/theme_provider";
 
 export function TextMessage({
   sender,

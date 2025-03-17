@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {ChatboxProps} from "@/themes/theme_provider";
+import {ChatboxProps} from "@/theme_provider";
 
 const ChatboxStyled = styled.div`
   border-radius: 16px;

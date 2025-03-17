@@ -1,5 +1,5 @@
 import React from "react";
-import {InputMessageProps} from "@/themes/theme_provider";
+import {InputMessageProps} from "@/theme_provider";
 
 export function InputMessage({
   value,

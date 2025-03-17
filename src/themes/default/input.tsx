@@ -1,6 +1,6 @@
 import React from "react";
 import Arrow from "./assets/Arrow.svg";
-import {ChatboxInputProps} from "@/themes/theme_provider";
+import {ChatboxInputProps} from "@/theme_provider";
 
 export function ChatboxInput({
   onChange,

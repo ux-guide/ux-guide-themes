@@ -1,6 +1,6 @@
 import {Message} from "@/message_types";
 import React from "react";
-import {ChatboxMessageProps} from "@/themes/theme_provider";
+import {ChatboxMessageProps} from "@/theme_provider";
 
 function getSender(msg: Message): string {
     if (msg instanceof Message.Text) {

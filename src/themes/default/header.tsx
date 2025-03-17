@@ -1,5 +1,5 @@
 import React from "react";
-import {ChatboxHeaderProps} from "@/themes/theme_provider";
+import {ChatboxHeaderProps} from "@/theme_provider";
 
 export function ChatboxHeader(_props: ChatboxHeaderProps) {
   return (

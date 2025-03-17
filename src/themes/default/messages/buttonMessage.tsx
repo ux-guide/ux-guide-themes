@@ -1,5 +1,5 @@
 import React from "react";
-import {ButtonMessageProps} from "@/themes/theme_provider";
+import {ButtonMessageProps} from "@/theme_provider";
 
 export function ButtonMessage({
   content,

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import {ChatboxMessagesProps} from "@/themes/theme_provider";
+import {ChatboxMessagesProps} from "@/theme_provider";
 
 const MessagesStyled = styled.div`
   display: flex;

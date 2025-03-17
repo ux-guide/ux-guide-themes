@@ -1,6 +1,6 @@
 import { Message } from "@/message_types";
 import React from "react";
-import {FormMessageProps} from "@/themes/theme_provider";
+import {FormMessageProps} from "@/theme_provider";
 
 export function FormMessage({
   theme,

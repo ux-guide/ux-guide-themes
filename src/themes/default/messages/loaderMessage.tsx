@@ -1,5 +1,5 @@
 import React from "react";
-import {LoaderMessageProps} from "@/themes/theme_provider";
+import {LoaderMessageProps} from "@/theme_provider";
 
 export function LoaderMessage(_props: LoaderMessageProps) {
   return (
