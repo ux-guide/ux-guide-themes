@@ -1,1 +1,248 @@
-<h1>Test</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Example Chatbox Styling</title>
+    <script type="module" defer>
+        import {defaultTheme} from "@/index.ts";
+        import React from "react";
+        import ReactDOM from "react-dom/client";
+
+        import {Message} from '@/message_types.ts';
+        import {Writable} from "@/utils";
+
+        // Simulate sending a message
+        const sendPrompt = async (message) => {
+            // In a real implementation, this would send the message to a server
+            console.log('Sending message:', message);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            alert("Sent message: " + message);
+        };
+
+        // Create a chat history example
+        const createChatHistory = () => {
+            // Create a chat history array
+            return [
+                // Welcome message
+                new Message.Text({
+                    content: "Welcome to TechSupport! How can I help you today?",
+                    sender: "bot"
+                }),
+
+                // User initial query
+                new Message.Text({
+                    content: "Hi, I'm having trouble accessing my account.",
+                    sender: "user"
+                }),
+
+                // Bot response with form
+                new Message.Form({
+                    title: "Account Recovery",
+                    children: [
+                        new Message.Text({
+                            content: "I'll help you recover your account. Please provide the following information:",
+                            sender: "bot"
+                        }),
+                        new Message.Input({
+                            value: new Writable(''),
+                            type: "normal",
+                            placeholder: "Enter your email address"
+                        }),
+                        new Message.Input({
+                            value: new Writable(''),
+                            type: "password",
+                            placeholder: "Enter last password you remember"
+                        }),
+                        new Message.Button({
+                            content: "Submit",
+                            onClick: async () => {
+                                // In a real implementation, this would submit the form data
+                                console.log('Form submitted:', {
+                                    email: new Writable(''),
+                                    password: new Writable(''),
+                                });
+                                // Simulate API call
+                                return new Promise(resolve => setTimeout(resolve, 1000));
+                            }
+                        })
+                    ]
+                }),
+
+                // Bot response after form submission
+                new Message.Text({
+                    content: "Thank you for providing that information. I've found your account. It appears your account was locked due to multiple failed login attempts.",
+                    sender: "bot"
+                }),
+
+                // User response
+                new Message.Text({
+                    content: "Oh, that makes sense. Can you help me unlock it?",
+                    sender: "user"
+                }),
+
+                // Bot response with options
+                new Message.Text({
+                    content: "Yes, I can help with that. I've sent a verification code to your email. Please check your inbox and choose one of the following options:",
+                    sender: "bot"
+                }),
+
+                // Button options
+                new Message.Button({
+                    content: "I received the code",
+                    onClick: async () => {
+                        await sendPrompt("I received the code");
+                    }
+                }),
+
+                new Message.Button({
+                    content: "I didn't receive any code",
+                    onClick: async () => {
+                        await sendPrompt("I didn't receive any code");
+                    }
+                }),
+
+                // User selection
+                new Message.Text({
+                    content: "I received the code",
+                    sender: "user"
+                }),
+
+                // Bot response with input for code
+                new Message.Form({
+                    title: "Verification",
+                    children: [
+                        new Message.Text({
+                            content: "Great! Please enter the verification code below:",
+                            sender: "bot"
+                        }),
+                        new Message.Input({
+                            value: new Writable(''),
+                            type: "normal",
+                            placeholder: "Enter verification code"
+                        }),
+                        new Message.Button({
+                            content: "Verify",
+                            onClick: async () => {
+                                // Simulate verification
+                                return new Promise(resolve => setTimeout(resolve, 1000));
+                            }
+                        })
+                    ]
+                }),
+
+                // Bot response after verification
+                new Message.Text({
+                    content: "Your account has been successfully unlocked! You can now log in with your existing password.",
+                    sender: "bot"
+                }),
+
+                // User response
+                new Message.Text({
+                    content: "Thank you! But I still have an issue with my account. Can you help me with something else?",
+                    sender: "user"
+                }),
+
+                // Bot response with another form
+                new Message.Form({
+                    title: "Additional Support",
+                    children: [
+                        new Message.Text({
+                            content: "I'd be happy to help with additional issues. Please describe your problem:",
+                            sender: "bot"
+                        }),
+                        new Message.Input({
+                            value: new Writable(''),
+                            type: "normal",
+                            placeholder: "Describe your issue"
+                        }),
+                        new Message.Button({
+                            content: "Submit",
+                            onClick: async () => {
+                                // Simulate submitting the issue
+                                return new Promise(resolve => setTimeout(resolve, 1000));
+                            }
+                        })
+                    ]
+                }),
+
+                // User issue description
+                new Message.Text({
+                    content: "I can't update my profile picture. It keeps showing an error when I try to upload a new one.",
+                    sender: "user"
+                }),
+
+                // Bot response with troubleshooting steps
+                new Message.Text({
+                    content: "I understand you're having trouble updating your profile picture. Let's troubleshoot this issue. First, please try the following:",
+                    sender: "bot"
+                }),
+
+                // Troubleshooting steps
+                new Message.Text({
+                    content: "1. Make sure your image is in JPG, PNG, or GIF format\n2. Check that the file size is under 5MB\n3. Try clearing your browser cache\n4. Use a different browser",
+                    sender: "bot"
+                }),
+
+                // Final bot question
+                new Message.Text({
+                    content: "Did any of these steps help resolve your issue?",
+                    sender: "bot"
+                }),
+
+                // Button options for final response
+                new Message.Button({
+                    content: "Yes, it's working now",
+                    onClick: async () => {
+                        await sendPrompt("Yes, it's working now");
+                    }
+                }),
+
+                new Message.Button({
+                    content: "No, I still have the issue",
+                    onClick: async () => {
+                        await sendPrompt("No, I still have the issue");
+                    }
+                }),
+
+                // User final response
+                new Message.Text({
+                    content: "Yes, it's working now! Clearing the cache fixed it. Thanks for your help!",
+                    sender: "user"
+                }),
+
+                // Bot final response
+                new Message.Text({
+                    content: "Excellent! I'm glad we were able to resolve both issues. Is there anything else I can help you with today?",
+                    sender: "bot"
+                }),
+
+                // Loading indicator while processing
+                new Message.Loader(),
+            ];
+        };
+
+        const theme = defaultTheme();
+        const chatbox = () =>
+            theme.Chatbox({
+                messages: createChatHistory(),
+                sendPrompt
+            });
+
+        function App() {
+            return React.createElement(
+                "div",
+                {className: "chatbox-container"},
+                React.createElement(chatbox),
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(
+            React.createElement(App),
+        );
+    </script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

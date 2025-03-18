@@ -1,3 +1,4 @@
+import "./style.css";
 import { ThemeProvider } from "./theme_provider";
 
 export { ThemeProvider };
