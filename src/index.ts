@@ -1,4 +1,7 @@
-export { Writable } from "./utils";
-export { Message } from "./message_types";
+import {ThemeProvider} from "./theme_provider";
 
-export { ThemeProvider } from "./theme_provider";
+export {ThemeProvider};
+export {Writable} from "./utils";
+export {Message} from "./message_types";
+
+export const defaultTheme = () => new ThemeProvider();
