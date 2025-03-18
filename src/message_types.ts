@@ -27,7 +27,7 @@ export interface InputMessage {
 }
 
 export abstract class Message {
-  public static Loader = class extends Message {};
+  public static Loader = class extends Message { };
 
   public static Text = class extends Message {
     public content: string;
